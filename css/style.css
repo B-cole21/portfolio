@@ -305,7 +305,17 @@ ul { list-style: none; }
 .timeline-card p:last-child { color: var(--text-dim); font-size: 0.93rem; }
 
 /* ---------- Contact ---------- */
-.contact-intro { color: var(--text-dim); max-width: 560px; margin: 0 auto 2.5rem; text-align: center; }
+.contact { position: relative; overflow: hidden; }
+.contact-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79, 124, 255, 0.18), transparent 48%),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.14), transparent 48%);
+  pointer-events: none;
+}
+.contact .container { position: relative; z-index: 1; text-align: center; }
+.contact-intro { color: var(--text-dim); max-width: 540px; margin: -1.5rem auto 2.5rem; font-size: 1.05rem; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
 .contact-card {
   display: flex;
@@ -316,14 +326,32 @@ ul { list-style: none; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem 1.5rem;
+  padding: 2.2rem 1.5rem;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.contact-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: var(--shadow); }
-.contact-icon { font-size: 1.8rem; }
+.contact-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 24px 60px rgba(79, 124, 255, 0.3); }
+.contact-icon {
+  font-size: 1.4rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(79, 124, 255, 0.12);
+  border: 1px solid var(--border);
+  margin-bottom: 0.6rem;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover .contact-icon {
+  transform: scale(1.1) rotate(-6deg);
+  background: var(--gradient);
+  color: #061026;
+  box-shadow: 0 0 30px rgba(79, 124, 255, 0.55);
+}
 .contact-label { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-.contact-value { font-weight: 600; font-size: 0.95rem; }
-.contact-placeholder { margin-top: 1.6rem; text-align: center; color: var(--text-dim); font-size: 0.82rem; opacity: 0.7; }
+.contact-value { font-weight: 600; font-size: 0.95rem; word-break: break-word; }
+.contact-cta { margin-top: 2.6rem; }
 
 /* ---------- Footer ---------- */
 .footer { text-align: center; padding: 2.2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.88rem; }
